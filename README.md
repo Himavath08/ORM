@@ -25,39 +25,25 @@ Enter the code for admin.py and models.py
 Execute Django admin and create details for 10 books
 
 ## PROGRAM
-#Model.py
+# Model.py
 ```
 from django.db import models
 from django.contrib import admin
-# Create your models here.
-
-class Student(models.Model):
-    referencenumber = models.CharField(max_length=10, help_text="Your Reference Nummber")
-    name = models.CharField(max_length=100)
-    age = models.IntegerField()
-    email = models.EmailField()
-    mobile_number = models.IntegerField()
-    
-class StudentAdmin(admin.ModelAdmin):
-    list_display = ('referencenumber','name','age','email','mobile_number')
-
-class Employee (models.Model):
-    emp_id=models.CharField(primary_key=True,max_length=4,help_text=' Employee ID')
-    ename=models.CharField(max_length=50)
-    post=models.CharField(max_length=20)
-    salary=models.IntegerField()
-
-class EmployeeAdmin(admin.ModelAdmin):
-    list_display=('emp_id','ename','post','salary')
+class books(models.Model):
+	name=models.CharField(max_length=20);
+	author=models.CharField(max_length=20);
+	id=models.IntegerField(primary_key=True);
+	copies=models.IntegerField();
+	price=models.IntegerField();
+class booksAdmin(admin.ModelAdmin):
+	list_display=("name","author","id","copies","price");
 ```
+
 ## Admin.py
 ```
 from django.contrib import admin
-from .models import Student,StudentAdmin,Employee,EmployeeAdmin
-
-# Register your models here.
-admin.site.register(Student,StudentAdmin)
-admin.site.register(Employee,EmployeeAdmin)
+from .models import books,booksAdmin
+admin.site.register(books,booksAdmin)
 ```
 ## OUTPUT
 ![WhatsApp Image 2024-03-22 at 11 37 36_94090ec4](https://github.com/Himavath08/ORM/assets/139110631/c5a0446e-7840-4889-9b43-1e31b26c5f53)
